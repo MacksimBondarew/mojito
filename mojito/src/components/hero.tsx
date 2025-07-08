@@ -5,33 +5,33 @@ import { SplitText } from "gsap/all";
 
 export default function Hero() {
     useGSAP(() => {
-        const heroSplit = new SplitText('.title', { type: 'chars, words' });
-        const paragraphSplit = new SplitText('.subtitle', { type: 'lines' });
-        heroSplit.chars.forEach((char) => char.classList.add('text-gradient'));
+        const heroSplit = new SplitText(".title", { type: "chars, words" });
+        const paragraphSplit = new SplitText(".subtitle", { type: "lines" });
+        heroSplit.chars.forEach((char) => char.classList.add("text-gradient"));
         gsap.from(heroSplit.chars, {
             yPercent: 100,
             duration: 1,
-            ease: 'expo.out',
+            ease: "expo.out",
             stagger: 0.06,
-        })
+        });
         gsap.from(paragraphSplit.lines, {
             opacity: 0,
             duration: 1.8,
             yPercent: 100,
-            ease: 'expo.out',
+            ease: "expo.out",
             stagger: 0.06,
-            delay: 1
+            delay: 1,
+        });
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: true,
+            },
         })
-        gsap.timeline({scrollTrigger: {
-            trigger: "#hero",
-            start: "top top",
-            end: "bottom top",
-            scrub: true
-        }}).to(".right-leaf", {
-            yPercent: 200
-        }, 0).to(".left-leaf", {
-            xPercent: -200,
-        }, 0)
+            .to(".right-leaf", { y: 200 }, 0)
+            .to(".left-leaf", { y: -200 }, 0);
     }, []);
     return (
         <section className="noisy" id="hero">
