@@ -86,7 +86,7 @@ export default function Hero() {
                 />
 
                 <div className="body">
-                    {/* <img src="/images/arrow.png" alt="arrow" className="arrow" /> */}
+                    <img src="/images/arrow.png" alt="arrow" className="arrow" />
 
                     <div className="content">
                         <div className="space-y-5 hidden md:block">
